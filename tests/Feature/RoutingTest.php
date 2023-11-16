@@ -1,0 +1,80 @@
+<?php
+
+namespace Tests\Feature;
+
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Tests\TestCase;
+
+class RoutingTest extends TestCase
+{
+    public function testGet()
+    {
+        $this->get('/bram')
+        ->assertStatus(200)
+        ->assertSeeText("Hallo Bram ganteng");
+    }
+
+    public function testRedirect()
+    {
+        $this->get('/youtube')
+        ->assertRedirect('/bram');
+    }
+
+    public function testFallback() 
+    {
+        $this->get('tidakada')
+        ->assertSeeText('404 by Bramasta Albatio');
+    }
+
+    public function testRouteParamater()
+    {
+        $this->get('/products/1')
+        ->assertSeeText('Product 1');
+
+        $this->get('/products/2')
+        ->assertSeeText('Product 2');
+
+        $this->get('/products/1/items/XXX')
+        ->assertSeeText("Product 1, Item XXX");
+
+        $this->get('/products/2/items/YYY')
+        ->assertSeeText("Product 2, Item YYY");
+    }
+
+    public function testRouteParamaterRegex()
+    {
+        $this->get('/categories/100')
+        ->assertSeeText('Category 100');
+
+        $this->get('/categories/bram')
+        ->assertSeeText('404 by Bramasta Albatio');
+    }
+
+    public function testRouteParameterOptional()
+    {
+        $this->get('/users/bramasta')
+        ->assertSeeText('User bramasta');
+
+        $this->get('/users/')
+        ->assertSeeText('User 404');
+    }
+
+    public function testRouteConfig()
+    {
+        $this->get('/conflict/domes')
+        ->assertSeeText("Conflict domes");
+
+        $this->get('/conflict/bram')
+        ->assertSeeText("Conflict Bramasta Albatio");
+    }
+
+    public function testNamedRoute()
+    {
+        $this->get('/produk/12345')
+        ->assertSeeText('Link http://localhost/products/12345');
+
+        $this->get('/produk-redirect/12345')
+        ->assertSeeText('/products/12345');
+    }
+}
