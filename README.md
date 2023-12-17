@@ -9,6 +9,42 @@
 
 ## About Laravel
 
+Mempelajari dasar-dasar Laravel Meliputi :
+1. Struktur Project
+2. Artisan
+3. Request Lifecycle
+4. Testing
+5. Environtment
+6. Configuration
+7. Configuration Cache
+8. Dependecy Injection
+9. Service Container
+10. Facades
+11. Routing
+12. View
+13. Static File
+14. Route Parameter
+15. Named Parameter
+16. Controller
+17. Request
+18. Request Input
+19. Input Type
+20. Filter Request Input
+21. File Storage
+22. File Upload
+23. Response
+24. Encryption
+25. Cookie
+26. Redirect
+27. Middleware
+28. Cross Site Request Forgery
+29. Route Group
+30. URL Generation
+31. Session
+32. Error Handling
+33. HTTP Exception
+34. Maintenance Mode
+
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
